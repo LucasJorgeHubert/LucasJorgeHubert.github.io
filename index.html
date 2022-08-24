@@ -1,0 +1,26 @@
+<html>
+    <head>
+
+        <script>
+     function showMessage( message ){
+
+    alert( message );
+
+     }
+window.addEventListener("message", (event) => {
+    console.log('-----------> ' + event.origin );
+    if (event.origin !== "http://127.0.0.1:3000")
+        return;
+    showMessage(event.data);
+}, false);
+        </script>
+    </head>
+
+    <body>
+
+        <div>Sample</div>
+
+        <div><button onclick="window.parent.postMessage('hello there!', '*');">Click me</button></div>
+
+    </body>
+</html>
